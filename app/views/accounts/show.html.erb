@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @account.amount %>
+</p>
+
+<p>
+  <b>Minimuminitdeposit:</b>
+  <%= @account.minimuminitdeposit %>
+</p>
+
+<p>
+  <b>Interestrate:</b>
+  <%= @account.interestrate %>
+</p>
+
+<p>
+  <b>Userid:</b>
+  <%= @account.userid %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
