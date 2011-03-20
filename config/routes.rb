@@ -1,6 +1,8 @@
 Userbank::Application.routes.draw do
-  resources :accounts
+  get "pages/home"
+  get "pages/about"
 
+  resources :accounts
   resources :users
 
   # The priority is based upon order of creation:
