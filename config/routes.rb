@@ -1,7 +1,11 @@
 Userbank::Application.routes.draw do
-  get "pages/home"
-  get "pages/about"
 
+  match '/', :to => 'pages#home'
+  match '/home', :to => 'pages#home'
+  match '/about', :to => 'pages#about'
+  match '/login', :to => 'pages#login'
+  match '/help', :to => 'pages#help'
+  
   resources :accounts
   resources :users
 
