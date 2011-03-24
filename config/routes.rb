@@ -1,10 +1,13 @@
 Userbank::Application.routes.draw do
 
+  get "users/new"
+
   match '/', :to => 'pages#home'
   match '/home', :to => 'pages#home'
   match '/about', :to => 'pages#about'
   match '/login', :to => 'pages#login'
   match '/help', :to => 'pages#help'
+  match '/signup', :to => 'pages#new'
  
   root :to => 'pages#home'
   
