@@ -5,6 +5,8 @@ Userbank::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/login', :to => 'pages#login'
   match '/help', :to => 'pages#help'
+ 
+  root :to => 'pages#home'
   
   resources :accounts
   resources :users
