@@ -1,4 +1,4 @@
-# Userbank
+# UserBank
 
 This is an implementation of the Banking Application assignment from HW1, along with the extra credit portions of the assignment as necessary for the Final homework assignment.
 
