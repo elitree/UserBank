@@ -19,10 +19,13 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :firstname, :lastname, :phone, :email, :password, :password_confirmation
 
+  phone_regex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/
+
   validates :firstname, :presence => true
   validates :lastname, :presence => true
   validates :email, :presence => true
-  validates :phone, :presence => true
+  validates :phone, :presence => true,
+  					:format => { :with => phone_regex 	}
   # Automatically create the virtual attribute 'password_confirmation'.
   validates :password, :presence     => true,
                        :confirmation => true,

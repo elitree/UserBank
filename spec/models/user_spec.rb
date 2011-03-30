@@ -15,6 +15,23 @@ describe User do
     User.new(hash).should_not be_valid
   end
   
+  it "should accept valid phone numbers" do
+  	nums = %w[617-943-4955]
+  	nums.each do |num|
+  	  valid_num_acct = User.new(@attr.merge(:phone => num))
+  	  valid_num_acct.should be_valid
+  	end
+  end
+
+  it "should reject invalid phone numbers" do
+  	nums = %w[617-943-955 61179434955]
+  	nums.each do |num|
+  	  invalid_num_acct = User.new(@attr.merge(:phone => num))
+  	  invalid_num_acct.should_not be_valid
+  	end
+  end
+  
+  
   describe "password validations" do
 
     it "should require a password" do
