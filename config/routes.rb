@@ -1,4 +1,8 @@
 Userbank::Application.routes.draw do
+  
+  resources :accounts
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
 
   match '/', :to => 'pages#home'
   match '/home', :to => 'pages#home'
@@ -6,12 +10,11 @@ Userbank::Application.routes.draw do
   match '/login', :to => 'pages#login'
   match '/help', :to => 'pages#help'
   match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
  
   root :to => 'pages#home'
   
-  resources :accounts
-  resources :users
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

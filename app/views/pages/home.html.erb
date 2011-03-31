@@ -4,4 +4,6 @@
   This is the home page.
 </p>
 
+<% if !signed_in? %>
 <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>
