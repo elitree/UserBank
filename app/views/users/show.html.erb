@@ -12,3 +12,9 @@
   <%= @user.email %>
 </p>
 
+<% unless @user.accounts.empty? %>
+  <table class="accounts" summary="User accounts">
+ <%= render @accounts %>
+ </table>
+<%= will_paginate @accounts %>
+<% end %>

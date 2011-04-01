@@ -1,0 +1,7 @@
+<tr>
+<td><%= account.id %></td>
+<td><%= account.acct_type %></td>
+<td><%= number_to_currency(account.amount, :unit => "$") %></td>
+<td><span class="timestamp">
+  Updated <%= time_ago_in_words(account.updated_at) %> ago.</span></td>
+</tr>

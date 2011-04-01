@@ -1,21 +1,23 @@
 # == Schema Information
-# Schema version: 20110320014308
+# Schema version: 20110331030124
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  firstname  :string(255)
-#  lastname   :string(255)
-#  phone      :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  salt       :string(255)
+#  id                 :integer         not null, primary key
+#  firstname          :string(255)
+#  lastname           :string(255)
+#  phone              :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#  admin              :boolean
 #
 
 require 'digest'
 class User < ActiveRecord::Base
-  has_many :accounts
+  has_many :accounts, :dependent => :destroy
   attr_accessor :password
   attr_accessible :firstname, :lastname, :phone, :email, :password, :password_confirmation
 

@@ -165,3 +165,9 @@ ul.users {
 .users li {
   list-style: none;
 }
+
+table.accounts tr td.account span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}

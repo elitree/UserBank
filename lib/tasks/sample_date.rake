@@ -25,5 +25,18 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
+    
+    User.all.each do |user|
+      3.times do
+        if (rand(999)%2 == 0) 
+          type = "Savings", interestrate = 0.05
+        else
+          type = "Checking", interestrate = 0.02
+        end
+        user.accounts.create!(:amount => rand(999).to_s+"."+rand(99).to_s,
+                              :type => type, :interestrate => interestrate)
+      end
+    end
+    
   end
 end

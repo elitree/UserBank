@@ -11,3 +11,10 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :account do |account|
+  account.amount "100.00"
+  account.acct_type "savings"
+  account.minimuminitdeposit "20.00"
+  account.interestrate "0.05"
+end
