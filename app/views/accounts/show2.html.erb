@@ -1,0 +1,23 @@
+<p id="notice"><%= @notice %></p>
+
+<table>
+
+<tr>
+<td><b>Name:</b></td>
+<td><%= @user1.fullname %></td>
+<td><%= @user2.fullname %></td>
+</tr>
+
+<tr>
+<td><b>Account Number:</b></td>
+<td><%= @account1.id %></td>
+<td><%= @account2.id %></td>
+</tr>
+
+<tr>
+<td><b>Amount:</b></td>
+<td><%= number_to_currency(@account1.amount, :unit => "$") %></td>
+<td><%= number_to_currency(@account2.amount, :unit => "$") %></td>
+</tr>
+
+</table>

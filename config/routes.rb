@@ -15,10 +15,9 @@ Userbank::Application.routes.draw do
   match '/newacct', :to => 'accounts#new'  
   match 'accounts/:id/deposit' => 'accounts#deposit'
   match 'accounts/:id/withdrawal' => 'accounts#withdrawal'
-  #match 'accounts/:id/transfer' => 'accounts#transfer'
-  #match 'accounts/:id/show2' => 'accounts#show2'
-  
- 
+  match 'accounts/:id/transfer' => 'accounts#transfer'
+  match 'accounts/:id/show2' => 'accounts#show2'
+   
   root :to => 'pages#home'
   
     # The standard resources include things like "edit", "index", "new", etc.
@@ -27,8 +26,8 @@ Userbank::Application.routes.draw do
      member do 
        get 'deposit'
        get 'withdrawal'
-       #get 'transfer'
-       #get 'show2'
+       get 'transfer'
+       get 'show2'
      end
   end
 

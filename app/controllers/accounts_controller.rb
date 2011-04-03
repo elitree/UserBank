@@ -1,6 +1,10 @@
 class AccountsController < ApplicationController
+  # needed for number_to_currency method
+  include ActionView::Helpers::NumberHelper
+
   before_filter :authenticate
-  before_filter :okay_user
+  before_filter :okay_user, :except => :index
+  before_filter :admin_user, :only => :index
 
   # GET /accounts
   # GET /accounts.xml
@@ -127,6 +131,46 @@ class AccountsController < ApplicationController
     end
   end
 
+  # PUT /accounts/1
+  # PUT /accounts/1.xml
+  def transfer
+    # Transfer from account1
+    @account1 = Account.find(params[:id])
+    @user1 = User.find(@account1.user_id)
+    # A temp array for the options menu
+    #  If it's a normal user, list all user's accounts except account1
+    #  If it's an admin user, list all accounts except account1
+    if admin_user 
+      @not_account1 = Account.all.reject{|x| x == @account1 }
+    else
+      @not_account1 = @user1.accounts
+    end
+
+    respond_to do |format|
+      if (amount = params[:transfer_amount])
+        @account2 = Account.find(params[:account2_id])
+        amount = amount.to_f
+        @account1.withdraw(amount)
+        @account2.deposit(amount)
+        amount = number_to_currency(amount, :unit => "$")
+        @notice = amount + " was successfully transferred from account " + @account1.id.to_s + " to account " + @account2.id.to_s + "."
+        @user2 = User.find(@account2.user_id)
+        format.html { render (:action => "show2") }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "transfer" }
+        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def show2
+     #@account1 = Account.find(params[:id])
+     #@account2 = Account.find(params[:account2_id])
+     respond_to do |format|
+      format.html # show2.html.erb
+    end
+  end
 
   # DELETE /accounts/1
   # DELETE /accounts/1.xml
@@ -155,9 +199,8 @@ class AccountsController < ApplicationController
       end
     end
     
-    def correct_user
-      @user = User.find(Account.find(params[:id]).user_id)
-      redirect_to(root_path) unless current_user?(@user)
+    def admin_user
+      current_user.admin?
     end
     
 end

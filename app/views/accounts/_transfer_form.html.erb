@@ -1,0 +1,19 @@
+<% form_tag(:action => 'transfer', :method=>'post') do %>
+  <div class="field">
+    To account: 
+    
+    <%= collection_select(:account, :id, @not_account1, :id, 
+                          :full_name_with_num_and_amt, {}, :name => "account2_id") %>
+  <div>
+    
+  <div class="field">
+    Amount:  <%= number_field_tag "transfer_amount", nil, :min => 0.01 %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= submit_tag "Transfer" %>
+  </div>
+
+<% end %>
