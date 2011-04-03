@@ -11,6 +11,7 @@
     <th>Type</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @accounts.each do |account| %>
@@ -21,7 +22,7 @@
 <td><%= account.acct_type %></td>
     <td><%= link_to 'Deposit', deposit_account_path(account) %>
     <td><%= link_to 'Withdraw', withdrawal_account_path(account) %>
-    
+    <td><%= link_to 'Transfer', transfer_account_path(account) %>    
 </tr>
 <% end %>
 </table>

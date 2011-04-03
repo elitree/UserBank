@@ -4,5 +4,9 @@
 <td><%= number_to_currency(account.amount, :unit => "$") %></td>
 <td><%= link_to 'Deposit', deposit_account_path(account) %>
 <td><%= link_to 'Withdraw', withdrawal_account_path(account) %>
+<% if current_user.accounts.length < 2 %>
+<td></td>
+<% else %>
 <td><%= link_to 'Transfer', transfer_account_path(account) %>
+<% end %>
 </tr>

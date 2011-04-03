@@ -3,8 +3,13 @@ The HW1 assignment is described here:
 <%= link_to "https://moodle.brandeis.edu/file.php/11062/Assignments/homework1.htm", "https://moodle.brandeis.edu/file.php/11062/Assignments/homework1.htm" %>
 <br>
 <br>
-The original incarnation of this assignment may be viewed at <%= link_to "this other site on Heroku", "http://morning-rain-796.heroku.com/" %>.  This version adds some of the extra credit options described there.
+The original incarnation of this assignment may be viewed at <%= link_to "this other site on Heroku", "http://morning-rain-796.heroku.com/" %>.  This version adds some of the extra credit options described there, including:
 <br>
+<ul>
+<li>Separation of the User model from the Account model, letting each user have and create multiple accounts.</li>
+<li>A hierarchy of users, where Administrative users are able to do more tasks and granted wider access in the system than Normal users.</li>
+<li>A userame/password login scheme demonstrating the use of a salt to avoid saving user passwords in the database.</li>
+</ul>
 <br>
 Note: the following open source projects were used in this project:
   <ul>

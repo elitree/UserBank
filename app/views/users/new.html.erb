@@ -3,11 +3,11 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :firstname %><br />
+    <%= f.label :firstname, "First Name" %><br />
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br />
+    <%= f.label :lastname, "Last Name" %><br />
     <%= f.text_field :lastname %>
   </div>
   <div class="field">

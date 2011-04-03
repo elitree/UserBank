@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   before_filter :authenticate
-  before_filter :okay_user, :except => :index
+  before_filter :okay_user, :except => [:index, :new, :create]
   before_filter :admin_user, :only => :index
 
   # GET /accounts
