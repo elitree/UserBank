@@ -1,3 +1,12 @@
+<script type="text/javascript">
+
+  function setinterestrate(choice){ 
+    var rates=[0.02,0.05];
+    var p=choice.options.selectedIndex;
+    choice.form.elements['account[interestrate]'].value=rates[p];
+  } 
+</script>
+
 <%= form_for(@account) do |f| %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
@@ -12,17 +21,23 @@
   <% end %>
 
   <div class="field">
+    <label for="account_user_id">User</label><br />
+    <%= collection_select(:user, :id, @user_choices, :id, 
+                          :fullname, {}, :name => "account[user_id]") %>
+  </div>
+  <div class="field">
+    <label for="account_acct_type">Account Type</label><br />
+    <select name="account[acct_type]" onload=setinterestrate(this) onchange=setinterestrate(this)>
+    <option value="Checking">Checking</option>
+    <option value="Savings">Savings</option>
+    </select>
+  </div>
+  <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </div>
-  <div class="field">
-    <%= f.label :acct_type %><br />
-    <%= f.text_field :acct_type %>
-  </div>
-  <div class="field">
-    <%= f.label :interestrate %><br />
-    <%= f.text_field :interestrate %>
-  </div>
+  <input name="account[interestrate]" type="hidden" value=0.02>
+
   <div class="actions">
     <%= f.submit %>
   </div>

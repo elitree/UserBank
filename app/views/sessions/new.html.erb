@@ -1,3 +1,6 @@
+<table>
+<tr>
+<td>
 <h1>Sign in</h1>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
@@ -13,5 +16,16 @@
     <%= f.submit "Sign in" %>
   </div>
 <% end %>
+</td>
+<td>
+<table>
+<tr><td>Note: to test drive the site without creating an account, choose from one of the following combinations:</td></tr>
+<tr><th>Type</th><th>Username</th><th>Password</th></tr>
+<tr><td>Administrator</td><td>admin@site.org</td><td>123456</td></tr>
+<tr><td>Normal Access</td><td>user@site.org</td><td>567890</td></tr>
+</table>
+</td> 
+</tr>
+</table>
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>

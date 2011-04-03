@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   
-  before_filter :authenticate, :only => [:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :authenticate
+  before_filter :correct_user, :except => :index
+  before_filter :admin_user,   :only => :index
 
   def index
     @title = "All users"
-    @users = User.paginate(:page => params[:page])
+    @users = User.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
  
   def show
     @user = User.find(params[:id])
-    @title = @user.firstname + " " + @user.lastname
+    @title = @user.fullname
     @accounts = @user.accounts.paginate(:page => params[:page])
   end
   
@@ -54,14 +54,13 @@ class UsersController < ApplicationController
   end
   
   private
+    def admin_user
+      current_user.admin?
+    end
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      deny_access unless (current_user?(@user) || current_user.admin?)
     end
     
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
-  
 end

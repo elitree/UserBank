@@ -1,0 +1,17 @@
+<% form_tag(:action => 'deposit', :method=>'post') do %>
+  <% if @error %>
+    <div id="error_explanation">
+      <ul>
+        <li><%= @error %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Amount:
+    <%= number_field_tag "dep_amount", nil, :min => 0.01 ,:max => @account.amount %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Deposit" %>
+  </div>
+<% end %>

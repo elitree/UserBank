@@ -14,7 +14,7 @@
 
 class Account < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :amount, :acct_type, :interestrate
+  attr_accessible :amount, :acct_type, :interestrate, :user_id
   
   validates :amount, :presence => true,
                      :numericality => { :greater_than => 0 }

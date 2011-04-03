@@ -1,29 +1,32 @@
 <h1>Listing accounts</h1>
 
+
+<%= will_paginate %>
+
 <table>
   <tr>
+    <th>User</th>
+    <th>ID</th>
     <th>Amount</th>
-    <th>Minimuminitdeposit</th>
-    <th>Interestrate</th>
-    <th>Userid</th>
-    <th></th>
-    <th></th>
+    <th>Type</th>
     <th></th>
   </tr>
 
 <% @accounts.each do |account| %>
   <tr>
-    <td><%= account.amount %></td>
-    <td><%= account.minimuminitdeposit %></td>
-    <td><%= account.interestrate %></td>
-    <td><%= account.userid %></td>
-    <td><%= link_to 'Show', account %></td>
-    <td><%= link_to 'Edit', edit_account_path(account) %></td>
-    <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<td><%= User.find(account.user_id).fullname %></td>
+<td><%= account.id %></td>
+<td><%= number_to_currency(account.amount, :unit => "$") %></td>
+<td><%= account.acct_type %></td>
+    <td><%= link_to 'Deposit', deposit_account_path(account) %>
+    
+</tr>
 <% end %>
 </table>
 
 <br />
+
+
+<%= will_paginate %>
 
 <%= link_to 'New Account', new_account_path %>

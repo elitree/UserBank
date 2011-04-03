@@ -3,16 +3,28 @@ require 'faker'
 namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
+  
+    # Reset the database
     Rake::Task['db:reset'].invoke
-    admin = User.create!(:firstname => "Example",
+    
+    # Make an Admin user
+    admin = User.create!(:firstname => "Admin",
                  :lastname => "User",
-                 :email => "example@railstutorial.org",
+                 :email => "admin@site.org",
                  :phone => "123-456-7890",
-                 :password => "foobar",
-                 :password_confirmation => "foobar")
+                 :password => "123456",
+                 :password_confirmation => "123456")
     admin.toggle!(:admin)
     
-    99.times do |n|
+    # Make a normal user
+    User.create!(:firstname => "Normal",
+                 :lastname => "User",
+                 :email => "user@site.org",
+                 :phone => "123-456-7891",
+                 :password => "567890",
+                 :password_confirmation => "567890")
+                 
+    18.times do |n|
       firstname  = Faker::Name.first_name
       lastname = Faker::Name.last_name
       phone = Faker::PhoneNumber.phone_number

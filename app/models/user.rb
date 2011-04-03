@@ -21,8 +21,10 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :firstname, :lastname, :phone, :email, :password, :password_confirmation
 
-  validates :firstname, :presence => true
-  validates :lastname, :presence => true
+  validates :lastname,  :presence => true,
+            			:length => { :maximum => 30 }
+  validates :firstname, :presence => true,
+  						:length => { :maximum => 30 }
   validates :email, :presence => true
   validates :phone, :presence => true
   # Automatically create the virtual attribute 'password_confirmation'.

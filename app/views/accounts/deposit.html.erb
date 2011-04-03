@@ -1,0 +1,6 @@
+<h1>Deposit into account <%= @account.id %></h1>
+<h3>Current amount <%= number_to_currency(@account.amount, :unit => "$") %></h3>
+
+<%= render 'dep_form' %>
+<br>
+<%= link_to "Cancel", home_path %>

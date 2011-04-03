@@ -12,8 +12,26 @@ Userbank::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/newacct', :to => 'accounts#new'  
+  match 'accounts/:id/deposit' => 'accounts#deposit'
+  match 'accounts/:id/withdrawal' => 'accounts#withdrawal'
+  #match 'accounts/:id/transfer' => 'accounts#transfer'
+  #match 'accounts/:id/show2' => 'accounts#show2'
+  
  
   root :to => 'pages#home'
+  
+    # The standard resources include things like "edit", "index", "new", etc.
+  # This block is for the actions not built into :accounts
+  resources :accounts do 
+     member do 
+       get 'deposit'
+       get 'withdrawal'
+       #get 'transfer'
+       #get 'show2'
+     end
+  end
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

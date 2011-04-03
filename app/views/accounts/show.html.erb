@@ -9,14 +9,12 @@
 
 <p>
   <b>Amount:</b>
-  <%= @account.amount %>
+  <%= number_to_currency(@account.amount, :unit => "$") %>
 </p>
 
 <p>
-  <b>Interestrate:</b>
+  <b>Interest Rate:</b>
   <%= @account.interestrate %>
 </p>
 
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to 'Back', user_path(@account.user_id) %>
