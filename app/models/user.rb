@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
                        :length       => { :within => 6..40 }
                        
   before_save :encrypt_password
+  
+  def fullname
+    self.firstname + " " + self.lastname
+  end
 
   # Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)

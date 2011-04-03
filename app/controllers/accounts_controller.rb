@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.xml
   def show
     @account = Account.find(params[:id])
-
+    @user = User.find(@account.user_id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @account }

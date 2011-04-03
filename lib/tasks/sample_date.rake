@@ -29,12 +29,15 @@ namespace :db do
     User.all.each do |user|
       3.times do
         if (rand(999)%2 == 0) 
-          type = "Savings", interestrate = 0.05
+          acct_type = "Savings"
+          interestrate = 0.05
         else
-          type = "Checking", interestrate = 0.02
+          acct_type = "Checking"
+          interestrate = 0.02
         end
         user.accounts.create!(:amount => rand(999).to_s+"."+rand(99).to_s,
-                              :type => type, :interestrate => interestrate)
+                              :acct_type => acct_type, 
+                              :interestrate => interestrate)
       end
     end
     

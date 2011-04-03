@@ -1,8 +1,8 @@
 <li>
-   <% fullname = user.firstname + " " + user.lastname %>
-   <%= link_to fullname, user %>
+   <%= link_to user.fullname, user %>
+   <% if user.admin? %> ***ADMIN*** <% end %>
    <% if current_user.admin? %>
   | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{fullname}" %>
+                                :title => "Delete #{user.fullname}" %>
   <% end %>
 </li>

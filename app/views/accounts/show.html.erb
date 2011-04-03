@@ -1,4 +1,11 @@
+<h1>Account <%= @account.id %> for <%= @user.fullname %>:</h1>
+
 <p id="notice"><%= notice %></p>
+
+<p>
+  <b>Account Type:</b>
+  <%= @account.acct_type %>
+</p>
 
 <p>
   <b>Amount:</b>
@@ -6,18 +13,8 @@
 </p>
 
 <p>
-  <b>Minimuminitdeposit:</b>
-  <%= @account.minimuminitdeposit %>
-</p>
-
-<p>
   <b>Interestrate:</b>
   <%= @account.interestrate %>
-</p>
-
-<p>
-  <b>Userid:</b>
-  <%= @account.userid %>
 </p>
 
 

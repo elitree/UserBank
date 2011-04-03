@@ -14,6 +14,12 @@
 
 <% unless @user.accounts.empty? %>
   <table class="accounts" summary="User accounts">
+  <tr>
+  <th>Account</th>
+  <th>Type</th>
+  <th>Amount</th>
+  <th>Last Update</th>
+  </tr>
  <%= render @accounts %>
  </table>
 <%= will_paginate @accounts %>
