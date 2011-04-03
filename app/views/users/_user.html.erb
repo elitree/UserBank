@@ -2,6 +2,7 @@
    <%= link_to user.fullname, user %>
    <% if user.admin? %> ***ADMIN*** <% end %>
    <% if current_user.admin? %>
+  | <%= link_to "edit", :action => "edit", :id => user.id %>
   | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
                                 :title => "Delete #{user.fullname}" %>
   <% end %>
