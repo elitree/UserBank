@@ -103,6 +103,30 @@ class AccountsController < ApplicationController
     end
   end
 
+  # PUT /accounts/1
+  # PUT /accounts/1.xml
+  def withdrawal
+    @account = Account.find(params[:id])
+
+    respond_to do |format|
+      if (amount = params[:withd_amount])
+        amount = amount.to_f
+        if (amount <= @account.amount)
+           @account.withdraw(amount)
+           format.html { redirect_to(@account, :notice => "Account #{@account.id} was successfully updated.") }
+           format.xml  { head :ok }
+        else
+           @error = "Amount may not exceed the account balance."
+           format.html { render :action => "withdrawal" }
+           format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
+        end
+      else
+        format.html { render :action => "withdrawal" }
+        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /accounts/1
   # DELETE /accounts/1.xml

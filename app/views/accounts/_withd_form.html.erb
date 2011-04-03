@@ -1,0 +1,29 @@
+<% form_tag(:action => 'withdrawal', :method=>'post') do %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @error %>
+    <div id="error_explanation">
+      <ul>
+        <li><%= @error %></li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Amount:
+    <%= number_field_tag "withd_amount", nil, :min => 0.01 ,:max => @account.amount %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Withdraw" %>
+  </div>
+<% end %>

@@ -1,0 +1,6 @@
+<h1>Withdraw from account <%= @account.id %></h1>
+<h3>Current amount <%= number_to_currency(@account.amount, :unit => "$") %></h3>
+
+<%= render 'withd_form' %>
+<br><br>
+<%= link_to "Cancel", user_path(@account.user_id) %>
