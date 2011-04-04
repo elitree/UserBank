@@ -12,7 +12,9 @@
   <%= @user.email %>
 </p>
 
-<% unless @user.accounts.empty? %>
+<% if @user.accounts.empty? %>
+   No accounts for this user... <%= link_to "open one here!", newacct_path %>
+<% else %>
   <table class="accounts" summary="User accounts">
   <tr>
   <th>Account</th>

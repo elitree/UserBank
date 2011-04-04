@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :firstname, :lastname, :phone, :email, :password, :password_confirmation
 
+  validates_uniqueness_of :email
+
   validates :lastname,  :presence => true,
             			:length => { :maximum => 30 }
   validates :firstname, :presence => true,

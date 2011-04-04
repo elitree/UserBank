@@ -6,4 +6,6 @@
 
 <% if !signed_in? %>
 <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<br>
+<div align="center">Existing users may <%= link_to "sign in here.", signin_path %></div>
 <% end %>
