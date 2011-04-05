@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   
   private
     def admin_user
-      current_user.admin?
+      deny_access unless current_user.admin?
     end
     
     def correct_user
