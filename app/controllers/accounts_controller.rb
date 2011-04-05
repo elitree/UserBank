@@ -143,7 +143,7 @@ class AccountsController < ApplicationController
     if admin_user 
       @not_account1 = Account.all.reject{|x| x == @account1 }
     else
-      @not_account1 = @user1.accounts
+      @not_account1 = @user1.accounts.reject{|x| x == @account1 }
     end
 
     respond_to do |format|
